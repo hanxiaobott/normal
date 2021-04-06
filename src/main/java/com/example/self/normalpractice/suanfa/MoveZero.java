@@ -6,5 +6,8 @@ package com.example.self.normalpractice.suanfa;
  * @create: 2021-04-06 10:27
  */
 public class MoveZero {
+    public static void main(String[] args) {
+        System.out.println("1");
+    }
 
 }
