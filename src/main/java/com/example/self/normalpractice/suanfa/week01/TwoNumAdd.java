@@ -1,5 +1,6 @@
 package com.example.self.normalpractice.suanfa.week01;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -26,6 +27,13 @@ public class TwoNumAdd {
 
 
     }
+
+    /**
+     * 时间复杂度是n
+     * @param a
+     * @param target
+     * @return
+     */
     public  static  int[] handle(int a[], int target){
         Map<Integer,Integer> map = new HashMap<>();
         for (int i = 0; i < a.length; i++) {
@@ -38,5 +46,30 @@ public class TwoNumAdd {
         }
 
         return null;
+    }
+
+    /**
+     * 时间复杂度是logn,因为有sort，sort的复杂度大(这种思路适用于三数之和)
+     * @param a
+     * @param target
+     * @return
+     */
+    public static int[] handle1(int a[], int target){
+        Arrays.sort(a);
+        int result[] = new int[2];
+        for (int i = 0, j = a.length -1 ; i < a.length && i < j;) {
+            if(target < a[i]){
+                return result;
+            }
+            if(a[i] + a[j] == target){
+                result[0] = a[i];
+                result[1] = a[j];
+            }else if(a[i] + a[j] > target){
+                j --;
+            }else {
+                i ++;
+            }
+        }
+        return result;
     }
 }
