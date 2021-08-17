@@ -7,31 +7,32 @@ package com.example.self.normalpractice.Thread;
  */
 public class JiaoTiShuChuCas {
 
+    private  static volatile Boolean flag = false;
+
     public static void main(String[] args) {
-        Flag flag = new Flag();
 
         new Thread(()->{
             for (int i = 1; i <= 26; i++) {
-                while (flag.flag){
+                while (flag){
                 }
                 System.out.print(i);
-                flag.flag = true;
+                flag = true;
             }
         }).start();
 
         new Thread(()->{
             for (int i = 1; i <= 26; i++) {
-                while (!flag.flag){
+                while (!flag){
 
                 }
                 System.out.print((char)(i+64));
-                flag.flag = false;
+                flag = false;
             }
         }).start();
     }
 
-    public static class Flag{
-        private volatile Boolean flag = false;
-    }
+//    public static class Flag{
+//        private volatile Boolean flag = false;
+//    }
 
 }
